@@ -10,7 +10,7 @@ const Home = () => {
   const [notes, setNotes] = useState<INotes[]>([]);
   const [data, setData] = useState<INotes | null>(null);
   const saveNote = () => {
-    dataOperation.save(uuid.v4(), data!);
+    dataOperation.save(String(uuid.v4()), data!);
   };
   useEffect(() => {
     dataOperation.getAllKeys().then(keys => {
