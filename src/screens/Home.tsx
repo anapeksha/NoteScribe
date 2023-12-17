@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ScrollView} from 'react-native';
 import uuid from 'react-native-uuid';
-import { Card, FloatingActionButton, Modal } from '../components';
-import { INotes } from '../types';
+import {Card, FloatingActionButton, Modal} from '../components';
+import {INotes} from '../types';
 import dataOperation from '../utils/DataOperation';
 
 const Home = () => {
@@ -12,17 +12,13 @@ const Home = () => {
   const saveNote = () => {
     dataOperation.save(uuid.v4(), data!);
   };
-  const getNotes = () => {};
   useEffect(() => {
-    dataOperation
-      .getAllKeys()
-      .then(results => {
-        console.log(results);
-        dataOperation.
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    dataOperation.getAllKeys().then(keys => {
+      console.log(keys);
+      dataOperation
+        .getAllItems(keys as string[])
+        .then(results => setNotes(results as any[]));
+    });
   }, []);
   return (
     <>
