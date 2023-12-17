@@ -24,7 +24,6 @@ const FloatingActionButton: React.FC<IFABprops> = ({action}) => {
       onPress={() => action(true)}
       mode="elevated"
       customSize={65}
-      variant="tertiary"
       style={styles.fab}
     />
   );
