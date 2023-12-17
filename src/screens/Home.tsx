@@ -9,15 +9,14 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const [notes, setNotes] = useState<INotes[]>([]);
   const [data, setData] = useState<INotes | null>(null);
+  const {save, getAllItems, getAllKeys} = dataOperation;
   const saveNote = () => {
-    dataOperation.save(String(uuid.v4()), data!);
+    save(String(uuid.v4()), data!);
   };
   useEffect(() => {
-    dataOperation.getAllKeys().then(keys => {
+    getAllKeys().then(keys => {
       console.log(keys);
-      dataOperation
-        .getAllItems(keys as string[])
-        .then(results => setNotes(results as any[]));
+      getAllItems(keys as string[]).then(results => setNotes(results as any[]));
     });
   }, []);
   return (
