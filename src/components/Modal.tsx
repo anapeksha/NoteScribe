@@ -15,7 +15,7 @@ const Modal: React.FC<IModalProps> = ({isVisible, setVisibility}) => {
         <Dialog.Title>Add a note</Dialog.Title>
         <Dialog.Content>
           <TextInput label="Title" mode="outlined" style={styles.input} />
-          <TextInput label="Note" mode="outlined" multiline numberOfLines={4} />
+          <TextInput label="Note" mode="outlined" multiline numberOfLines={6} />
         </Dialog.Content>
         <Dialog.Actions>
           <Button mode="outlined" icon="content-save">
