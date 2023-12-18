@@ -6,9 +6,8 @@ const Settings = () => {
   return (
     <ScrollView>
       <List.Section>
-        <List.Item title="Dark Mode">
-          <Switch />
-        </List.Item>
+        <List.Item title="Dark Mode" />
+        <Switch aria-label="Hello" />
       </List.Section>
     </ScrollView>
   );
