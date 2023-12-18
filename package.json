@@ -9,9 +9,14 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anapeksha/NoteScribe.git"
+  },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.9",
+    "@reduxjs/toolkit": "^2.0.1",
     "react": "18.2.0",
     "react-native": "0.73.0",
     "react-native-paper": "^5.11.4",
@@ -19,7 +24,10 @@
     "react-native-screens": "^3.29.0",
     "react-native-svg": "13.4.0",
     "react-native-uuid": "^2.0.1",
-    "react-native-vector-icons": "^10.0.3"
+    "react-native-vector-icons": "^10.0.3",
+    "react-redux": "^9.0.4",
+    "redux": "^5.0.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
