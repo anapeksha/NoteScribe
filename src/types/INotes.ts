@@ -1,7 +1,11 @@
 interface INotes {
+  id: string;
   title: string;
-  shortDescription: string;
-  description: string;
+  note: string;
+  isArchived?: boolean;
+  isDeleted?: boolean;
+  createdAt: Date;
+  deletedAt?: Date;
 }
 
 export default INotes;

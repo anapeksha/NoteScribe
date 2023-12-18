@@ -1,16 +1,13 @@
-import {NavigationContainer} from '@react-navigation/native';
-import * as React from 'react';
-import {MD3DarkTheme, PaperProvider} from 'react-native-paper';
+import React, {FC, PropsWithChildren} from 'react';
 import Navigator from './Navigator';
+import Providers from './Providers';
 
-const App: React.FC<React.PropsWithChildren> = ({children}) => {
+const App: FC<PropsWithChildren> = ({children}) => {
   return (
-    <NavigationContainer>
-      <PaperProvider theme={MD3DarkTheme}>
-        <Navigator />
-        {children}
-      </PaperProvider>
-    </NavigationContainer>
+    <Providers>
+      <Navigator />
+      {children}
+    </Providers>
   );
 };
 

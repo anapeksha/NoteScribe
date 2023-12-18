@@ -1,12 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text} from 'react-native-paper';
+import {ScrollView} from 'react-native';
+import {List, Switch} from 'react-native-paper';
 
 const Settings = () => {
   return (
-    <View>
-      <Text>Settings</Text>
-    </View>
+    <ScrollView>
+      <List.Section>
+        <List.Item title="Dark Mode">
+          <Switch />
+        </List.Item>
+      </List.Section>
+    </ScrollView>
   );
 };
 

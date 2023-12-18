@@ -1,34 +1,35 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
-import uuid from 'react-native-uuid';
+import React, {useState} from 'react';
+import {FlatList} from 'react-native';
 import {Card, FloatingActionButton, Modal} from '../components';
+import {useAppDispatch, useAppSelector} from '../redux/hooks';
+import {saveNote, selectNotes} from '../redux/slice/noteSlice';
 import {INotes} from '../types';
-import dataOperation from '../utils/DataOperation';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
-  const [notes, setNotes] = useState<INotes[]>([]);
-  const [data, setData] = useState<INotes | null>(null);
-  const {save, getAllItems, getAllKeys} = dataOperation;
-  const saveNote = () => {
-    save(String(uuid.v4()), data!);
+  const [data, setData] = useState<INotes>();
+  const tempNotes = useAppSelector(selectNotes);
+  const dispatch = useAppDispatch();
+  const save = (note: INotes) => {
+    dispatch(saveNote(note));
   };
-  useEffect(() => {
-    getAllKeys().then(keys => {
-      console.log(keys);
-      getAllItems(keys as string[]).then(results => setNotes(results as any[]));
-    });
-  }, []);
   return (
     <>
-      <ScrollView scrollEnabled={!open}>
-        {notes &&
-          notes.map((value, index) => {
-            return <Card key={index} />;
-          })}
-      </ScrollView>
+      <FlatList
+        data={tempNotes}
+        renderItem={({item}) => (
+          <Card title={item.title} createdAt={new Date(item.createdAt)} />
+        )}
+        keyExtractor={item => item.id}
+      />
       <FloatingActionButton action={setOpen} />
-      <Modal isVisible={open} setVisibility={setOpen} onSave={saveNote} />
+      <Modal
+        isVisible={open}
+        setVisibility={setOpen}
+        onSave={save}
+        data={data}
+        dataSetter={setData}
+      />
     </>
   );
 };
