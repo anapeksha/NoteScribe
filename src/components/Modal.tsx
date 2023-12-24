@@ -9,12 +9,7 @@ import {
 import uuid from 'react-native-uuid';
 import {IModalProps, INotes} from '../types';
 
-const Modal: React.FC<IModalProps> = ({
-  isVisible,
-  setVisibility,
-  dataSetter,
-  onSave,
-}) => {
+const Modal: React.FC<IModalProps> = ({isVisible, setVisibility, onSave}) => {
   const [title, setTitle] = useState('');
   const [note, setNote] = useState('');
   const cancelAction = () => {
@@ -46,7 +41,6 @@ const Modal: React.FC<IModalProps> = ({
           <HelperText type="error" visible={false}>
             Title is required
           </HelperText>
-
           <TextInput
             label="Note"
             multiline
